@@ -337,6 +337,75 @@
   <h2 class="title is-3">Compare with Geometry Guided Street-View Synthesis<sup>[1]</sup></h2>
 </div>
 
+<section class="section pb-0">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered is-multiline">
+      <div class="column is-one-third">
+        <div class="columns is-mobile is-centered">
+          <div class="column is-half has-text-centered">
+            <video src= "./src/ablation/sat1.mp4" autoplay loop muted playsinline max-width="30%" style="height:8rem;" id="sat1"></video>
+          </div>
+        </div>
+      </div>
+      <div class="column is-one-third">
+        <div class="columns is-mobile is-centered">
+          <div class="column is-half has-text-centered">
+            <video src= "./src/ablation/sat2.mp4" autoplay loop muted playsinline max-width="30%" style="height:8rem;" id="sat2"></video>
+          </div>
+        </div>
+      </div>
+      <div class="column is-one-third">
+        <div class="columns is-mobile is-centered">
+          <div class="column is-half has-text-centered">
+            <video src= "./src/ablation/sat3.mp4" autoplay loop muted playsinline max-width="30%" style="height:8rem;" id="sat3"></video>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section pd-3">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered is-multiline">
+      <div class="column is-one-third is-vcentered is-centered is-multiline is-flex" style="height: 10rem;">
+        <video class="video" id="exp_base_13"  max-width="100%"  loop playsinline autoPlay muted src="./src/ablation/shi-our1.mp4" onplay="resizeAndPlay(this)"></video>
+        <canvas width="80" height="40" class="videoMerge" id="exp_base_13Merge"></canvas>
+      </div>
+      <div class="column is-one-third is-vcentered is-centered is-multiline is-flex">
+        <video class="video" id="exp_base_15"  max-width="100%"  loop playsinline autoPlay muted src="./src/ablation/shi-our2.mp4" onplay="resizeAndPlay(this)"></video>
+        <canvas width="80" height="40" class="videoMerge" id="exp_base_15Merge"></canvas>
+      </div>
+      <div class="column is-one-third is-vcentered is-centered is-multiline is-flex">
+        <video class="video" id="exp_base_16"  max-width="100%"  loop playsinline autoPlay muted src="./src/ablation/shi-our3.mp4" onplay="resizeAndPlay(this)"></video>
+        <canvas width="80" height="40" class="videoMerge" id="exp_base_16Merge"></canvas>
+      </div>
+    </div>
+  </div>
+</section>
+<script>
+  var v1 = document.getElementById("sat1");
+  var v2 = document.getElementById("sat2");
+  var v3 = document.getElementById("sat3");
+  var v4 = document.getElementById("exp_base_13");
+  var v5 = document.getElementById("exp_base_15");
+  var v6 = document.getElementById("exp_base_16");
+
+  function synchronized(){
+    cur = v1.currentTime;
+    if(cur<0.09){
+      v2.currentTime = cur;
+      v3.currentTime = cur;
+      v4.currentTime = cur;
+      v5.currentTime = cur;
+      v6.currentTime = cur;
+      console.log(cur);
+    }
+  }
+
+  setInterval(synchronized, 100);
+</script>
+
 <!-- <section class="section">
   <div class="container is-max-desktop">
     <div class="columns is-centered is-multiline">
@@ -353,7 +422,7 @@
   </div>
 </section> -->
 
-<section class="section">
+<!-- <section class="section">
   <div class="container is-max-desktop">
     <div class="columns is-centered is-multiline">
       <div class="column is-one-third is-vcentered is-centered is-multiline is-flex" style="height: 8rem;">
@@ -370,7 +439,7 @@
       </div>
     </div>
   </div>
-</section>
+</section> -->
 
 
 
