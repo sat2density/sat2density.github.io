@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="Sat2Density">
+  <meta name="keywords" content="Sat2Density, NeRF">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sat2Density: Faithful Density Learning from Satellite-Ground Image Pairs</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script> -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <!-- <link rel="icon" href="./static/images/favicon.svg"> --> 
+  <!-- favicon -->
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+  <script src="./static/js/video_comparison.js"></script>
+  <!-- <script src="./static/js/compare.js"></script> -->
+  <style>
+    .centerBlock{
+        text-align: center!important;
+        display: flex; 
+        justify-content: center; 
+        align-items: center; 
+        margin-top: 10px;
+      }
+  </style>
+</head>
+<body>
+
+<!-- <nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div> -->
+  <!-- <div class="navbar-menu"> -->
+    <!-- <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+      <a class="navbar-item" href="https://keunhong.com">
+      <span class="icon">
+          <i class="fas fa-home"></i>
+      </span>
+      </a>
+
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          More Research
+        </a>
+        <div class="navbar-dropdown">
+          <a class="navbar-item" href="https://hypernerf.github.io">
+            HyperNeRF
+          </a>
+          <a class="navbar-item" href="https://nerfies.github.io">
+            Nerfies
+          </a>
+          <a class="navbar-item" href="https://latentfusion.github.io">
+            LatentFusion
+          </a>
+          <a class="navbar-item" href="https://photoshape.github.io">
+            PhotoShape
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div> -->
+<!-- </nav> -->
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">Sat2Density: Faithful Density Learning from Satellite-Ground Image Pairs</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://qianmingduowan.github.io/mqian.github.io/">Ming Qian</a>,</span>
+            <span class="author-block">
+              <!-- <a href="https://jetcat.site">Jincheng Xiong</a>,</span> -->
+              Jincheng Xiong,</span>
+            <span class="author-block">
+              <a href="http://www.captain-whu.com/xia_En.html">Gui-Song Xia</a>,</span>
+            <span class="author-block">
+              <a href="https://xuenan.net/">Nan Xue</a>
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">Wuhan University</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <!-- <span class="link-block">
+                <a href="TBD"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span> -->
+              <span class="link-block">
+                <!-- <a href="https://arxiv.org/abs/2011.12948" -->
+                <a href="TDB"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <!-- Video Link. -->
+              <!-- <span class="link-block">
+                <a href="https://www.youtube.com/watch?v=MrKrnHhk8IA"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video</span>
+                </a>
+              </span> -->
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href=''
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code_TDB</span>
+                  </a>
+              </span>
+              <!-- Dataset Link. -->
+              <!-- <span class="link-block">
+                <a href="https://github.com/google/nerfies/releases/tag/0.1"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="far fa-images"></i>
+                  </span>
+                  <span>Data</span>
+                  </a> -->
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- <section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <video id="teaser" autoplay muted loop playsinline height="100%">
+        <source src="./static/videos/teaser.mp4"
+                type="video/mp4">
+      </video>
+      <h2 class="subtitle has-text-centered">
+        <span class="dnerf">Nerfies</span> turns selfie videos from your phone into
+        free-viewpoint
+        portraits.
+      </h2>
+    </div>
+  </div>
+</section> -->
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            This paper aims to develop an accurate 3D geometry representation of satellite images using satellite-ground image pairs.
+            Our focus is on the challenging problem of generating ground-view panoramas from satellite images. 
+          </p>
+          <p>
+            We draw inspiration from the density field representation used in volumetric neural rendering and propose a new approach, called Sat2Density. 
+            Our method utilizes the properties of ground-view panoramas for the sky and non-sky regions to learn faithful density fields of 3D scenes in a geometric perspective. 
+          </p>
+          <p>
+            Unlike other methods that require extra 3D information during training, our Sat2Density can automatically learn the accurate and faithful 3D geometry via density representation from 2D-only supervision.
+            This advancement significantly improves the ground-view panorama synthesis task.
+            Additionally, our study provides a new geometric perspective to understand the relationship between satellite and ground-view images in 3D space. 
+          </p>
+
+          
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+
+    <!-- Paper video. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Video</h2>
+        <div class="publication-video">
+          <!-- <iframe src="https://www.youtube.com/embed/MrKrnHhk8IA?rel=0&amp;showinfo=0" -->
+          <iframe src="https://youtube.com/embed/mf00PRXUpTU"
+
+                  frameborder="0" allow="encrypted-media" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+    <!--/ Paper video. -->
+  </div>
+</section>
+
+
+
+<div class="columns is-centered has-text-centered">
+  <h2 class="title is-3">Ablation Study</h2>
+</div>
+<!-- <section class="section">
+  <div class="container is-max-desktop">
+
+    <div class="columns is-centered">
+
+      
+      <h3 class="title is-3">Whether to Cat Sky Opacity </h3>
+
+      <div class="column">
+        <div class="content"></div>
+          <video class="video" id="exp_base_"  width="100%"  loop playsinline autoPlay muted src="./src/density_compare/ablation_opa1.mp4" onplay="resizeAndPlay(this)"></video>
+          <canvas width="80" height="40" class="videoMerge" id="exp_base_Merge"></canvas>
+      </div>
+      <div class="column">
+        <div class="content"></div>
+          <video class="video" id="exp_base_1"  width="100%"  loop playsinline autoPlay muted src="./src/density_compare/ablation_opa1.mp4" onplay="resizeAndPlay(this)"></video>
+          <canvas width="80" height="40" class="videoMerge" id="exp_base_1Merge"></canvas>
+      </div>
+
+    </div>
+  </div>
+</section> -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <h3 class="title is-3">Satellite </h3>
+    <div class="columns is-centered">
+
+      <div class="column is-vcentered is-centered" is-vcentered>
+          <video src= "./src/ablation/sat.mp4" autoplay loop muted playsinline></video>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <h3 class="title is-3">Whether to Supervise Non-Sky Opacity </h3>
+    <div class="columns is-centered is-multiline">
+
+      <div class="column is-one-fourth is-vcentered is-centered is-multiline is-flex">
+        <video class="video" id="exp_base_3"  max-width="100%"  loop playsinline autoPlay muted src="./src/ablation/baseline-baseline_opa_density.mp4" onplay="resizeAndPlay(this)"></video>
+        <canvas width="80" height="80" class="videoMerge" id="exp_base_3Merge"></canvas>
+      </div>
+
+
+      <div class="column is-half is-vcentered is-centered is-multiline is-flex">
+        <video class="video" id="exp_base_2"  max-width="100%"  loop playsinline autoPlay muted src="./src/ablation/baseline-baseline_opa.mp4" onplay="resizeAndPlay(this)"></video>
+        <canvas width="80" height="40" class="videoMerge" id="exp_base_2Merge"></canvas>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <h3 class="title is-3">Whether to Injection Style </h3>
+    <div class="columns is-centered is-multiline">
+      
+
+      <div class="column is-one-fourth is-vcentered is-centered is-multiline is-flex">
+        <video class="video" id="exp_base_6"  max-width="100%"  loop playsinline autoPlay muted src="./src/ablation/baseline-baseline_sty_density.mp4" onplay="resizeAndPlay(this)"></video>
+        <canvas width="80" height="40" class="videoMerge" id="exp_base_6Merge"></canvas>
+      </div>
+
+      <div class="column is-half is-vcentered is-centered is-multiline is-flex">
+        <video class="video" id="exp_base_5"  max-width="100%"  loop playsinline autoPlay muted src="./src/ablation/baseline-baseline_sty.mp4" onplay="resizeAndPlay(this)"></video>
+        <canvas width="80" height="40" class="videoMerge" id="exp_base_5Merge"></canvas>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <h3 class="title is-3">Whether to Injection Style & Supervise Non-Sky Opacity</h3>
+    <div class="columns is-centered is-multiline">
+      
+
+      <div class="column is-one-fourth is-vcentered is-centered is-multiline is-flex">
+        <video class="video" id="exp_base_9"  max-width="100%"  loop playsinline autoPlay muted src="./src/ablation/baseline-whole_density.mp4" onplay="resizeAndPlay(this)"></video>
+        <canvas width="80" height="40" class="videoMerge" id="exp_base_9Merge"></canvas>
+      </div>
+
+      <div class="column is-half is-vcentered is-centered is-multiline is-flex">
+        <video class="video" id="exp_base_8"  max-width="100%"  loop playsinline autoPlay muted src="./src/ablation/baseline-whole.mp4" onplay="resizeAndPlay(this)"></video>
+        <canvas width="80" height="40" class="videoMerge" id="exp_base_8Merge"></canvas>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <h3 class="title is-3">Whether to Cat Depth</h3>
+    <div class="columns is-centered is-multiline">
+      
+
+      <div class="column is-one-fourth is-vcentered is-centered is-multiline is-flex">
+        <video class="video" id="exp_base_12"  max-width="100%"  loop playsinline autoPlay muted src="./src/ablation/whole-catdepth_density.mp4" onplay="resizeAndPlay(this)"></video>
+        <canvas width="80" height="40" class="videoMerge" id="exp_base_12Merge"></canvas>
+      </div>
+
+      <div class="column is-half is-vcentered is-centered is-multiline is-flex">
+        <video class="video" id="exp_base_11"  max-width="100%"  loop playsinline autoPlay muted src="./src/ablation/whole-catdepth.mp4" onplay="resizeAndPlay(this)"></video>
+        <canvas width="80" height="40" class="videoMerge" id="exp_base_11Merge"></canvas>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<div class="columns is-centered has-text-centered">
+  <h2 class="title is-3">Comparison with Shi et al.</h2>
+</div>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered is-multiline">
+      <div class="column is-one-third is-vcentered is-centered is-multiline is-flex">
+        <video src= "./src/ablation/sat1.mp4" autoplay loop muted playsinline max-width="30%"></video>
+      </div>
+      <div class="column is-one-third is-vcentered is-centered is-multiline is-flex">
+        <video src= "./src/ablation/sat2.mp4" autoplay loop muted playsinline max-width="30%"></video>
+      </div>
+      <div class="column is-one-third is-vcentered is-centered is-multiline is-flex">
+        <video src= "./src/ablation/sat3.mp4" autoplay loop muted playsinline max-width="30%"></video>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered is-multiline">
+      <div class="column is-one-third is-vcentered is-centered is-multiline is-flex">
+        <video class="video" id="exp_base_13"  max-width="100%"  loop playsinline autoPlay muted src="./src/ablation/shi-our1.mp4" onplay="resizeAndPlay(this)"></video>
+        <canvas width="80" height="40" class="videoMerge" id="exp_base_13Merge"></canvas>
+      </div>
+      <div class="column is-one-third is-vcentered is-centered is-multiline is-flex">
+        <video class="video" id="exp_base_15"  max-width="100%"  loop playsinline autoPlay muted src="./src/ablation/shi-our2.mp4" onplay="resizeAndPlay(this)"></video>
+        <canvas width="80" height="40" class="videoMerge" id="exp_base_15Merge"></canvas>
+      </div>
+      <div class="column is-one-third is-vcentered is-centered is-multiline is-flex">
+        <video class="video" id="exp_base_16"  max-width="100%"  loop playsinline autoPlay muted src="./src/ablation/shi-our3.mp4" onplay="resizeAndPlay(this)"></video>
+        <canvas width="80" height="40" class="videoMerge" id="exp_base_16Merge"></canvas>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- <section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered is-multiline">
+      <div class="column is-one-third is-vcentered is-centered is-multiline is-flex">
+        <video src= "./src/ablation/sat2.mp4" autoplay loop playsinline max-width="30%"></video>
+      </div>
+
+      <div class="column is-two-third is-vcentered is-centered is-multiline is-flex">
+        <video class="video" id="exp_base_25"  max-width="100%"  loop playsinline autoPlay muted src="./src/ablation/shi-our2.mp4" onplay="resizeAndPlay(this)"></video>
+        <canvas width="80" height="40" class="videoMerge" id="exp_base_25Merge"></canvas>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered is-multiline">     
+      <div class="column is-one-third is-vcentered is-centered is-multiline is-flex">
+        <video src= "./src/ablation/sat3.mp4" autoplay loop playsinline max-width="30%"></video>
+      </div>
+
+      <div class="column is-two-thirds is-vcentered is-centered is-multiline is-flex">
+        <video class="video" id="exp_base_26"  max-width="100%"  loop playsinline autoPlay muted src="./src/ablation/shi-our3.mp4" onplay="resizeAndPlay(this)"></video>
+        <canvas width="80" height="40" class="videoMerge" id="exp_base_26Merge"></canvas>
+      </div>
+
+    </div>
+  </div>
+</section>  -->
+
+
+    <!-- Concurrent Work.
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Related Links</h2>
+
+        <div class="content has-text-justified">
+          <p>
+            There's some work that was introduced around the same time as ours. Shi et al. Behind the scene
+          </p>
+          <p>
+            <a href="https://arxiv.org/abs/2104.09125">Progressive Encoding for Neural Optimization</a> introduces an idea similar to our windowed position encoding for coarse-to-fine optimization.
+          </p>
+          <p>
+            <a href="https://www.albertpumarola.com/research/D-NeRF/index.html">D-NeRF</a> and <a href="https://gvv.mpi-inf.mpg.de/projects/nonrigid_nerf/">NR-NeRF</a>
+            both use deformation fields to model non-rigid scenes.
+          </p>
+          <p>
+            Some works model videos with a NeRF by directly modulating the density, such as <a href="https://video-nerf.github.io/">Video-NeRF</a>, <a href="https://www.cs.cornell.edu/~zl548/NSFF/">NSFF</a>, and <a href="https://neural-3d-video.github.io/">DyNeRF</a>
+          </p>
+          <p>
+            There are probably many more by the time you are reading this. Check out <a href="https://dellaert.github.io/NeRF/">Frank Dellart's survey on recent NeRF papers</a>, and <a href="https://github.com/yenchenlin/awesome-NeRF">Yen-Chen Lin's curated list of NeRF papers</a>.
+          </p> -->
+        <!-- </div>
+      </div>
+    </div>
+    <!-/ Concurrent Work. -->
+
+  <!-- </div>
+</section> -->
+
+<section class="section">
+  <!-- Paper Pipeline. -->
+  <div class="columns is-centered has-text-centered">
+    <!-- Concurrent Work. -->
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Related Links</h2>
+
+        <div class="content has-text-justified">
+          <p>
+            Sat2Density provides a perspective to rethink 
+          </p>
+          <p>
+            <a href="https://ieeexplore.ieee.org/abstract/document/9674229">Geometry Guided Street-View Panorama Synthesis</a>  
+          </p>
+          <p>
+            <a href="https://fwmb.github.io/bts/">Behind the Scenes</a> 
+          </p>         
+          <p>
+            <a href="https://chail.github.io/persistent-nature/">Persistent Nature </a> 
+          </p>   
+          <p>
+            <a href="https://nvlabs.github.io/GANcraft/">GANCraft </a>
+          </p>             
+        </div>
+      </div>
+    </div>
+    <!--/ Concurrent Work. -->
+
+  </div>
+</section>
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@article{park2021nerfies,
+  author    = {Qian, Ming and Jincheng, Xiong and Gui-Song, Xia. and Nan, Xue},
+  title     = {Sat2Density: Faithful Density Learning from Satellite-Ground Image Pairs},
+  journal   = {Arxiv},
+  year      = {2023},
+}</code></pre>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <!-- <a class="icon-link"
+         href="./static/videos/nerfies_paper.pdf">
+        <i class="fas fa-file-pdf"></i>
+      </a>
+      <a class="icon-link" href="https://github.com/keunhong" class="external-link" disabled>
+        <i class="fab fa-github"></i>
+      </a> -->
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website was modified from the <a
+            href="https://github.com/nerfies/nerfies.github.io">nerfies</a>. Appreaciate for the template!
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

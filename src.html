@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Sat2Density</title>
+    
+    <style>
+      body{
+        font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+        width: 60%;
+        margin-left: 20%;
+        margin-right: 20%;
+      }
+      a{
+        color: #007bff;
+        text-decoration: none;
+        
+      }
+      a:hover{
+        text-decoration: underline;
+        color: #0056b3;
+        transition: color 0.3s, text-decoration 0.3s;
+      }
+      .centerBlock{
+        text-align: center!important;
+        display: flex; /* 将容器div设置为flex布局 */
+        justify-content: center; /* 将子元素水平居中 */
+        align-items: center; /* 将子元素垂直居中 */
+        margin-top: 10px;
+      }
+      .contentBlock{
+        width: 100%;
+        background-color: rgb(240, 240, 240);
+        /* border: 20px solid rgb(240, 240, 240); */
+        /* margin-top: 30px; */
+      }
+      .title{
+        margin-bottom: 0px;
+        font-size: 2.8em;
+        padding-top: 5px;
+        font-weight: 600;
+      }
+      .subtitle{
+        font-size: 2.0em;
+        margin-top: 10px;
+      }
+      .authorInfo{
+        width:20%
+      }
+      .authorName{
+        font-size: 0.9em;
+        font-weight: 700;
+        height:25px;
+      }
+      .authorInstitude{
+        font-size: 1.0em;
+        font-weight: 400;
+        height:40px;
+        margin-bottom: 20px;
+      }
+      .videoBlock{
+        background-color: rgb(240,240,240);
+        margin: auto;
+        padding: 20px;
+        width: auto;
+      }
+      video{
+        width: 100%; /* 设置视频的宽度为600像素 */
+        max-width: 100%; /* 将视频的最大宽度设置为容器的100% */
+        margin:0; /* 将视频水平居中 */
+        /* border: 10px solid rgb(245, 245, 245); */
+      }
+      .rotationVideo{
+        border: 1px, solid white;
+        width: 30%;
+        position: absolute;
+        transition-duration: 0.4s;
+      }
+      .link{
+        width:25%;
+        font-size: 2em;
+        margin-top: 30px;
+        margin-bottom: 30px;
+      }
+      #rotateVideoContainer{
+        margin-top: 40px;
+        width: 100%;
+        height:200px;
+        position: relative;
+        align-items: center;
+        overflow: hidden;
+        display: flex;
+        /* justify-content: center; */
+      }
+      button{
+        background-color: white;
+        border: none;
+      }
+      button:hover{
+        background-color: rgb(245, 245, 245);
+      }
+      .dot{
+        width: 8px;
+        height: 8px; 
+        border-radius: 4px; 
+        background-color: rgb(230, 230, 230); 
+        margin: 8px;
+      }
+      
+    </style>
+  </head>
+  <body>
+    <div class="centerBlock">
+      <h1 class="title">Sat2Density:</h1>
+    </div>
+    <div class="centerBlock">
+      <p class="subtitle">Faithful Density Learning from Satellite-Ground Image Pairs</p>
+    </div>
+
+    <div class="centerBlock">
+      <div class="authorInfo">
+        <div class="authorName">
+          <p><a href="https://qianmingduowan.github.io/mqian.github.io/">Ming Qian</a></p>
+        </div>
+        <div class="authorInstitude">
+          <p>Wuhan University</p>
+        </div>
+      </div>
+      <div class="authorInfo">
+        <div class="authorName">
+          <p><a href="https://jetcat.site">Jincheng Xiong</a></p>
+        </div>
+        <div class="authorInstitude">
+          <p>Wuhan University</p>
+        </div>
+      </div>
+      <div class="authorInfo">
+        <div class="authorName">
+          <p><a href="http://www.baidu.com">Gui-Song Xia</a></p>
+        </div>
+        <div class="authorInstitude">
+          <p>Wuhan University</p>
+        </div>
+      </div>
+      <div class="authorInfo">
+        <div class="authorName">
+          <p><a href="http://www.baidu.com">Nan Xue</a></p>
+        </div>
+        <div class="authorInstitude">
+          <p>Wuhan University</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="centerBlock">
+      <div class="link">
+        <a href="">[Paper]</a>
+      </div>
+      <div class="link">
+        <a href="">[Code]</a>
+      </div>
+      <div class="link">
+        <a href="">[Data]</a>
+      </div>
+    </div>
+
+    <div id="rotateVideoContainer"></div>
+    <div class="centerBlock">
+      <button id="leftButton1">
+        <img src="left_arrow.png" alt="" style="width: 30px;">
+      </button>
+      <div class="centerBlock" id="dotContainer1"></div>
+      <button id="rightButton1">
+        <img src="right_arrow.png" alt="" style="width: 30px;">
+      </button>
+    </div>
+    <script src="./rotate.js" type="text/javascript" charset="utf-8"></script>
+
+    <h1 style>Overview Video</h1>
+    <div class="centerBlock">
+      <video src="./src/sat2density.mp4" controls="controls"></video>
+    </div>
+
+    
+  </body>
+</html>
