@@ -224,7 +224,7 @@
     <!-- Paper video. -->
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
-        <h2 class="title is-3">Video</h2>
+        <h2 class="title is-3">Methods</h2>
         <div class="publication-video">
           <!-- <iframe src="https://www.youtube.com/embed/MrKrnHhk8IA?rel=0&amp;showinfo=0" -->
           <iframe src="https://youtube.com/embed/mf00PRXUpTU"
@@ -240,31 +240,10 @@
 
 
 <div class="columns is-centered has-text-centered">
-  <h2 class="title is-3">Ablation Study</h2>
+  <h2 class="title is-3">Key Components Effect</h2>
 </div>
+
 <!-- <section class="section">
-  <div class="container is-max-desktop">
-
-    <div class="columns is-centered">
-
-      
-      <h3 class="title is-3">Whether to Cat Sky Opacity </h3>
-
-      <div class="column">
-        <div class="content"></div>
-          <video class="video" id="exp_base_"  width="100%"  loop playsinline autoPlay muted src="./src/density_compare/ablation_opa1.mp4" onplay="resizeAndPlay(this)"></video>
-          <canvas width="80" height="40" class="videoMerge" id="exp_base_Merge"></canvas>
-      </div>
-      <div class="column">
-        <div class="content"></div>
-          <video class="video" id="exp_base_1"  width="100%"  loop playsinline autoPlay muted src="./src/density_compare/ablation_opa1.mp4" onplay="resizeAndPlay(this)"></video>
-          <canvas width="80" height="40" class="videoMerge" id="exp_base_1Merge"></canvas>
-      </div>
-
-    </div>
-  </div>
-</section> -->
-<section class="section">
   <div class="container is-max-desktop">
     <h3 class="title is-3">Satellite </h3>
     <div class="columns is-centered">
@@ -274,11 +253,11 @@
       </div>
     </div>
   </div>
-</section>
+</section> -->
 
 <section class="section">
   <div class="container is-max-desktop">
-    <h3 class="title is-3">Whether to Supervise Non-Sky Opacity </h3>
+    <h3 class="title is-5">Non-Sky Opacity Loss</h3>
     <div class="columns is-centered is-multiline">
 
       <div class="column is-one-fourth is-vcentered is-centered is-multiline is-flex">
@@ -289,7 +268,7 @@
 
       <div class="column is-half is-vcentered is-centered is-multiline is-flex">
         <video class="video" id="exp_base_2"  max-width="100%"  loop playsinline autoPlay preload muted src="./src/ablation/baseline-baseline_opa.mp4" onplay="resizeAndPlay(this)"></video>
-        <canvas width="80" height="40" class="videoMerge" id="exp_base_2Merge"></canvas>
+        <canvas  class="videoMerge" id="exp_base_2Merge"></canvas>
       </div>
     </div>
   </div>
@@ -297,18 +276,18 @@
 
 <section class="section">
   <div class="container is-max-desktop">
-    <h3 class="title is-3">Whether to Injection Style </h3>
+    <h3 class="title is-5">Illumination Injection </h3>
     <div class="columns is-centered is-multiline">
       
 
       <div class="column is-one-fourth is-vcentered is-centered is-multiline is-flex">
         <video class="video" id="exp_base_6"  max-width="100%"  loop playsinline autoPlay preload muted src="./src/ablation/baseline-baseline_sty_density.mp4" onplay="resizeAndPlay(this)"></video>
-        <canvas width="80" height="40" class="videoMerge" id="exp_base_6Merge"></canvas>
+        <canvas  class="videoMerge" id="exp_base_6Merge"></canvas>
       </div>
 
       <div class="column is-half is-vcentered is-centered is-multiline is-flex">
         <video class="video" id="exp_base_5"  max-width="100%"  loop playsinline autoPlay preload muted src="./src/ablation/baseline-baseline_sty.mp4" onplay="resizeAndPlay(this)"></video>
-        <canvas width="80" height="40" class="videoMerge" id="exp_base_5Merge"></canvas>
+        <canvas  class="videoMerge" id="exp_base_5Merge"></canvas>
       </div>
     </div>
   </div>
@@ -317,18 +296,18 @@
 
 <section class="section">
   <div class="container is-max-desktop">
-    <h3 class="title is-3">Whether to Injection Style & Supervise Non-Sky Opacity</h3>
+    <h3 class="title is-5">Non-Sky Opacity Loss & Illumination Injection</h3>
     <div class="columns is-centered is-multiline">
       
 
       <div class="column is-one-fourth is-vcentered is-centered is-multiline is-flex">
         <video class="video" id="exp_base_9"  max-width="100%"  loop playsinline autoPlay preload muted src="./src/ablation/baseline-whole_density.mp4" onplay="resizeAndPlay(this)"></video>
-        <canvas width="80" height="40" class="videoMerge" id="exp_base_9Merge"></canvas>
+        <canvas  class="videoMerge" id="exp_base_9Merge"></canvas>
       </div>
 
       <div class="column is-half is-vcentered is-centered is-multiline is-flex">
         <video class="video" id="exp_base_8"  max-width="100%"  loop playsinline autoPlay preload muted src="./src/ablation/baseline-whole.mp4" onplay="resizeAndPlay(this)"></video>
-        <canvas width="80" height="40" class="videoMerge" id="exp_base_8Merge"></canvas>
+        <canvas  class="videoMerge" id="exp_base_8Merge"></canvas>
       </div>
     </div>
   </div>
@@ -336,18 +315,18 @@
 
 <section class="section">
   <div class="container is-max-desktop">
-    <h3 class="title is-3">Whether to Cat Depth</h3>
+    <h3 class="title is-5">Cat Depth</h3>
     <div class="columns is-centered is-multiline">
       
 
       <div class="column is-one-fourth is-vcentered is-centered is-multiline is-flex">
         <video class="video" id="exp_base_12"  max-width="100%"  loop playsinline autoPlay preload muted src="./src/ablation/whole-catdepth_density.mp4" onplay="resizeAndPlay(this)"></video>
-        <canvas width="80" height="40" class="videoMerge" id="exp_base_12Merge"></canvas>
+        <canvas  class="videoMerge" id="exp_base_12Merge"></canvas>
       </div>
 
       <div class="column is-half is-vcentered is-centered is-multiline is-flex">
-        <video class="video" id="exp_base_11"  max-width="100%"  loop playsinline autoPlay preload muted src="./src/ablation/whole-catdepth.mp4" onplay="resizeAndPlay(this)"></video>
-        <canvas width="80" height="40" class="videoMerge" id="exp_base_11Merge"></canvas>
+        <video class="video" id="exp_base_18"  max-width="100%"  loop playsinline autoPlay preload muted src="./src/ablation/whole-catdepth.mp4" onplay="resizeAndPlay(this)"></video>
+        <canvas  class="videoMerge" id="exp_base_18Merge"></canvas>
       </div>
     </div>
   </div>
@@ -355,10 +334,10 @@
 
 
 <div class="columns is-centered has-text-centered">
-  <h2 class="title is-3">Comparison with Shi et al.</h2>
+  <h2 class="title is-3">Compare with Geometry Guided Street-View Synthesis<sup>[1]</sup>.</h2>
 </div>
 
-<section class="section">
+<!-- <section class="section">
   <div class="container is-max-desktop">
     <div class="columns is-centered is-multiline">
       <div class="column is-one-third is-vcentered is-centered is-multiline is-flex">
@@ -372,22 +351,22 @@
       </div>
     </div>
   </div>
-</section>
+</section> -->
 
 <section class="section">
   <div class="container is-max-desktop">
     <div class="columns is-centered is-multiline">
       <div class="column is-one-third is-vcentered is-centered is-multiline is-flex">
-        <video class="video" id="exp_base_13"  max-width="100%"  loop playsinline preload autoPlay muted src="./src/ablation/shi-our1.mp4" onplay="resizeAndPlay(this)"></video>
-        <canvas width="80" height="40" class="videoMerge" id="exp_base_13Merge"></canvas>
+        <video class="video" id="exp_base_13"   loop playsinline preload autoPlay muted src="./src/ablation/shi-our1.mp4" onplay="resizeAndPlay(this)"></video>
+        <canvas class="videoMerge" id="exp_base_13Merge"></canvas>
       </div>
       <div class="column is-one-third is-vcentered is-centered is-multiline is-flex">
-        <video class="video" id="exp_base_15"  max-width="100%"  loop playsinline preload autoPlay muted src="./src/ablation/shi-our2.mp4" onplay="resizeAndPlay(this)"></video>
-        <canvas width="80" height="40" class="videoMerge" id="exp_base_15Merge"></canvas>
+        <video class="video" id="exp_base_15"    loop playsinline preload autoPlay muted src="./src/ablation/shi-our2.mp4" onplay="resizeAndPlay(this)"></video>
+        <canvas class="videoMerge" id="exp_base_15Merge"></canvas>
       </div>
       <div class="column is-one-third is-vcentered is-centered is-multiline is-flex">
-        <video class="video" id="exp_base_16"  max-width="100%"  loop playsinline preload autoPlay muted src="./src/ablation/shi-our3.mp4" onplay="resizeAndPlay(this)"></video>
-        <canvas width="80" height="40" class="videoMerge" id="exp_base_16Merge"></canvas>
+        <video class="video" id="exp_base_16"   loop playsinline preload autoPlay muted src="./src/ablation/shi-our3.mp4" onplay="resizeAndPlay(this)"></video>
+        <canvas class="videoMerge" id="exp_base_16Merge"></canvas>
       </div>
     </div>
   </div>
@@ -404,7 +383,7 @@
 
       <div class="column is-two-third is-vcentered is-centered is-multiline is-flex">
         <video class="video" id="exp_base_25"  max-width="100%"  loop playsinline autoPlay muted src="./src/ablation/shi-our2.mp4" onplay="resizeAndPlay(this)"></video>
-        <canvas width="80" height="40" class="videoMerge" id="exp_base_25Merge"></canvas>
+        <canvas  class="videoMerge" id="exp_base_25Merge"></canvas>
       </div>
 
     </div>
@@ -420,7 +399,7 @@
 
       <div class="column is-two-thirds is-vcentered is-centered is-multiline is-flex">
         <video class="video" id="exp_base_26"  max-width="100%"  loop playsinline autoPlay muted src="./src/ablation/shi-our3.mp4" onplay="resizeAndPlay(this)"></video>
-        <canvas width="80" height="40" class="videoMerge" id="exp_base_26Merge"></canvas>
+        <canvas  class="videoMerge" id="exp_base_26Merge"></canvas>
       </div>
 
     </div>
@@ -460,28 +439,25 @@
 
 <section class="section">
   <!-- Paper Pipeline. -->
+  <div class="container is-max-desktop">
   <div class="columns is-centered has-text-centered">
     <!-- Concurrent Work. -->
-    <div class="columns is-centered">
-      <div class="column is-full-width">
-        <h2 class="title is-3">Related Links</h2>
+     <div class="columns is-centered">
+        <div class="column is-full-width">
+          <h2 class="title is-3">Related Links</h2>
 
-        <div class="content has-text-justified">
-          <p>
-            Sat2Density provides a perspective to rethink 
-          </p>
-          <p>
-            <a href="https://ieeexplore.ieee.org/abstract/document/9674229">Geometry Guided Street-View Panorama Synthesis</a>  
-          </p>
-          <p>
-            <a href="https://fwmb.github.io/bts/">Behind the Scenes</a> 
-          </p>         
-          <p>
-            <a href="https://chail.github.io/persistent-nature/">Persistent Nature </a> 
-          </p>   
-          <p>
-            <a href="https://nvlabs.github.io/GANcraft/">GANCraft </a>
-          </p>             
+          <div class="content has-text-justified">
+            <p>
+              To the best of our knowledge, Sat2Density represents the first successful attempt to learn a precise 3D geometry from satellite-ground image pairs, 
+              which significantly advances the recognition of satellite-ground tasks from a geometric perspective.
+            </p>
+            <p>
+              To better understand our method, we recommend the reader to read 
+              <a href="https://github.com/shiyujiao/Sat2StrPanoramaSynthesis">Geometry Guided Street-View Panorama Synthesis<sup>[1]</sup> </a> and <a href="https://nvlabs.github.io/GANcraft/">GANCraft.</a>  
+            </p>
+            <p>
+              Besides, some co-current works are also recommend: <a href="https://fwmb.github.io/bts/">Behind the Scenes</a> and <a href="https://chail.github.io/persistent-nature/">Persistent Nature </a>.  
+          </div>
         </div>
       </div>
     </div>
