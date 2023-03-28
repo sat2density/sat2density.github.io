@@ -205,11 +205,11 @@
 
 <section class="section">
   <div class="container is-max-desktop">
-    <!-- Abstract. -->
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
+          <div class="paragraph">
           <p>
             This paper aims to develop an accurate 3D geometry representation of satellite images using satellite-ground image pairs.
             Our focus is on the challenging problem of generating ground-view panoramas from satellite images. 
@@ -223,7 +223,7 @@
             This advancement significantly improves the ground-view panorama synthesis task.
             Additionally, our study provides a new geometric perspective to understand the relationship between satellite and ground-view images in 3D space. 
           </p>
-
+        </div>
           
         </div>
       </div>
@@ -250,7 +250,29 @@
 
 <div class="columns is-centered has-text-centered">
   <h2 class="title is-3">Key Components Effect</h2>
+  
 </div>
+
+
+<div class="container is-max-desktop">
+  <!-- Abstract. -->
+  <div class="columns is-centered has-text-centered">
+    <div class="column is-four-fifths">
+      <!-- <h2 class="title is-3">Abstract</h2> -->
+      <div class="content has-text-justified">
+        <div class="paragraph">
+        <p>
+          Initially, we constructed a baseline using an explicit density field. 
+          However, learning the geometry in this challenging task proved to be difficult. 
+          We analyzed the unique obstacles that arose with this problem and devised two intuitive solutions: 
+          non-sky opacity supervision and illumination injection. 
+        </p>
+      </div>
+        
+      </div>  
+    </div>
+  </div>
+
 
 <!-- <section class="section">
   <div class="container is-max-desktop">
@@ -267,25 +289,39 @@
 <section class="section">
   <div class="container is-max-desktop">
     <h3 class="title is-5">Non-Sky Opacity Loss</h3>
+    <div class="comparison">
+      <div class="paragraph">
+        <p>
+          The video on the left shows the predicted density, while the video on the right is the synthesized video based on a given trajectory. In both videos, the left-hand side displays the baseline result, while the right-hand side depicts the baseline result with Non-Sky Opacity Loss incorporated.
+        </p>
+      </div>
+      <div class="paragraph">
+        <p>
+          When only Non-Sky Opacity supervision is added, the opacity of the air region is reduced to zero. However, the area between the air and the ground still appears unsatisfactory. Although this supervision does clear the sky region in the volume density, the inner region between the sky and the ground remains smoothed.
+        </p>
+      </div>
+    </div>
     <div class="columns is-centered is-multiline">
 
       <div class="column is-one-fourth is-vcentered is-centered is-multiline is-flex">
         <video class="video" id="exp_base_3"  max-width="100%"  loop playsinline autoPlay preload muted src="./src/ablation/baseline-baseline_opa_density.mp4" onplay="resizeAndPlay(this)"></video>
         <canvas width="80" height="80" class="videoMerge" id="exp_base_3Merge"></canvas>
       </div>
-
-
       <div class="column is-half is-vcentered is-centered is-multiline is-flex">
         <video class="video" id="exp_base_2"  max-width="100%"  loop playsinline autoPlay preload muted src="./src/ablation/baseline-baseline_opa.mp4" onplay="resizeAndPlay(this)"></video>
         <canvas  class="videoMerge" id="exp_base_2Merge"></canvas>
       </div>
     </div>
   </div>
-</section>
+<!-- </section> -->
 
-<section class="section">
+<!-- <section class="section"> -->
   <div class="container is-max-desktop">
     <h3 class="title is-5">Illumination Injection </h3>
+    <p>
+    Compared to the baseline, the addition of illumination injection can improve the appearance of the rendered depth, 
+    but the density of trees appears indistinct, and the density of the sky region remains unclear.
+    </p>
     <div class="columns is-centered is-multiline">
       
 
@@ -300,12 +336,26 @@
       </div>
     </div>
   </div>
-</section>
+<!-- </section> -->
 
 
-<section class="section">
+<!-- <section class="section"> -->
   <div class="container is-max-desktop">
     <h3 class="title is-5">Non-Sky Opacity Loss & Illumination Injection</h3>
+    <div class="comparison">
+      <div class="paragraph">
+        <p>
+          The simultaneous use of both strategies has resulted in a compelling 3D geometry representation that produces 
+          a depth map that accurately reflects the satellite scene. The volume density is noticeably clearer than the baselines, 
+          and the inner regions can be easily distinguished, indicating the success of the combined approach.
+        </p> 
+        <p>  
+          The incorporation of both strategies has made geometry learning possible.
+        </p>
+      </div>
+    </div>
+
+
     <div class="columns is-centered is-multiline">
       
 
@@ -320,11 +370,23 @@
       </div>
     </div>
   </div>
-</section>
+<!-- </section> -->
 
-<section class="section">
+<!-- <section class="section"> -->
   <div class="container is-max-desktop">
     <h3 class="title is-5">Cat Depth</h3>
+    <div class="comparison">
+      <div class="paragraph">
+        <p>In each video, the left one is the baseline with Non-Sky Opacity Loss & Illumination Injection, the right one concatenate depth with the initial panora to send to the RenderNet(Sat2Density).</p>
+        <p>    The depth information is concatenated with the initial panorama during the rendering process, 
+          resulting in images that highlight regions with depth information and reduce the chances of generating objects in areas with an opacity of 0. 
+          As a result, the synthesized ground view closely resembles the original satellite scene. </p>
+      </div>
+    </div>
+
+    
+
+
     <div class="columns is-centered is-multiline">
       
 
@@ -342,42 +404,54 @@
 </section>
 
 
-<div class="columns is-centered has-text-centered">
-  <h2 class="title is-3">Compare with Geometry Guided Street-View Synthesis<sup>[1]</sup></h2>
-</div>
 
 <section class="section pb-0">
+  <div class="columns is-centered has-text-centered">
+    <h2 class="title is-3">Compare with Geometry Guided Street-View Synthesis<sup>[1]</sup></h2>
+  </div>
+  <div class="comparison">
+    <div class="paragraph">
+      <p>A previous excellent work Geometry Guided Street-View Panorama Synthesis<sup>[1]</sup> learned geometry through a height distribution map stored in a multi-plane image.</p>
+      <p>For comparison, we expand their work by incorporating camera position changes during inference, enabling them to synthesize videos with moving cameras.</p>
+    </div>
+    <div class="paragraph">
+      <p>We surpass their results for two main reasons: 1. the density based geometry representation is more robust, and 2. the proposed two strategies make geometry learning possible.</p>
+    </div>
+    <div class="paragraph">
+      <p>Please refer to our paper to more analysis.</p> 
+    </div>
+  </div>
   <div class="container is-max-desktop">
     <div class="columns is-centered is-multiline">
       <div class="column is-one-third">
         <div class="columns is-mobile is-centered">
           <div class="column is-half has-text-centered">
-            <video src= "./src/ablation/sat1.mp4" autoplay loop muted playsinline max-width="30%" style="height:8rem;" id="sat1"></video>
+            <video src= "./src/ablation/sat1.mp4" autoplay loop muted playsinline  id="sat1"></video>
           </div>
         </div>
       </div>
       <div class="column is-one-third">
         <div class="columns is-mobile is-centered">
           <div class="column is-half has-text-centered">
-            <video src= "./src/ablation/sat2.mp4" autoplay loop muted playsinline max-width="30%" style="height:8rem;" id="sat2"></video>
+            <video src= "./src/ablation/sat2.mp4" autoplay loop muted playsinline  id="sat2"></video>
           </div>
         </div>
       </div>
       <div class="column is-one-third">
         <div class="columns is-mobile is-centered">
           <div class="column is-half has-text-centered">
-            <video src= "./src/ablation/sat3.mp4" autoplay loop muted playsinline max-width="30%" style="height:8rem;" id="sat3"></video>
+            <video src= "./src/ablation/sat3.mp4" autoplay loop muted playsinline  id="sat3"></video>
           </div>
         </div>
       </div>
     </div>
   </div>
-</section>
+<!-- </section> -->
 
-<section class="section pd-3">
+<!-- <section class="section pd-3"> -->
   <div class="container is-max-desktop">
     <div class="columns is-centered is-multiline">
-      <div class="column is-one-third is-vcentered is-centered is-multiline is-flex" style="height: 10rem;">
+      <div class="column is-one-third is-vcentered   is-centered is-multiline is-flex" style="height: 10rem;">
         <video class="video" id="exp_base_13"  max-width="100%"  loop playsinline autoPlay muted src="./src/ablation/shi-our1.mp4" onplay="resizeAndPlay(this)"></video>
         <canvas width="80" height="40" class="videoMerge" id="exp_base_13Merge"></canvas>
       </div>
@@ -415,105 +489,6 @@
   setInterval(synchronized, 100);
 </script>
 
-<!-- <section class="section">
-  <div class="container is-max-desktop">
-    <div class="columns is-centered is-multiline">
-      <div class="column is-one-third is-vcentered is-centered is-multiline is-flex">
-        <video src= "./src/ablation/sat1.mp4" autoplay loop muted preload playsinline max-width="30%"></video>
-      </div>
-      <div class="column is-one-third is-vcentered is-centered is-multiline is-flex">
-        <video src= "./src/ablation/sat2.mp4" autoplay loop muted preload playsinline max-width="30%"></video>
-      </div>
-      <div class="column is-one-third is-vcentered is-centered is-multiline is-flex">
-        <video src= "./src/ablation/sat3.mp4" autoplay loop muted preload playsinline max-width="30%"></video>
-      </div>
-    </div>
-  </div>
-</section> -->
-
-<!-- <section class="section">
-  <div class="container is-max-desktop">
-    <div class="columns is-centered is-multiline">
-      <div class="column is-one-third is-vcentered is-centered is-multiline is-flex" style="height: 8rem;">
-        <video class="video" id="exp_base_13"   loop playsinline preload autoPlay muted src="./src/ablation/shi-our1.mp4" onplay="resizeAndPlay(this)"></video>
-        <canvas class="videoMerge" id="exp_base_13Merge"></canvas>
-      </div>
-      <div class="column is-one-third is-vcentered is-centered is-multiline is-flex">
-        <video class="video" id="exp_base_15"   loop playsinline preload autoPlay muted src="./src/ablation/shi-our2.mp4" onplay="resizeAndPlay(this)"></video>
-        <canvas class="videoMerge"  id="exp_base_15Merge"></canvas>
-      </div>
-      <div class="column is-one-third is-vcentered is-centered is-multiline is-flex">
-        <video class="video" id="exp_base_16"   loop playsinline preload autoPlay muted src="./src/ablation/shi-our3.mp4" onplay="resizeAndPlay(this)"></video>
-        <canvas class="videoMerge" id="exp_base_16Merge"></canvas>
-      </div>
-    </div>
-  </div>
-</section> -->
-
-
-
-<!-- <section class="section">
-  <div class="container is-max-desktop">
-    <div class="columns is-centered is-multiline">
-      <div class="column is-one-third is-vcentered is-centered is-multiline is-flex">
-        <video src= "./src/ablation/sat2.mp4" autoplay loop playsinline max-width="30%"></video>
-      </div>
-
-      <div class="column is-two-third is-vcentered is-centered is-multiline is-flex">
-        <video class="video" id="exp_base_25"  max-width="100%"  loop playsinline autoPlay muted src="./src/ablation/shi-our2.mp4" onplay="resizeAndPlay(this)"></video>
-        <canvas  class="videoMerge" id="exp_base_25Merge"></canvas>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<section class="section">
-  <div class="container is-max-desktop">
-    <div class="columns is-centered is-multiline">     
-      <div class="column is-one-third is-vcentered is-centered is-multiline is-flex">
-        <video src= "./src/ablation/sat3.mp4" autoplay loop playsinline max-width="30%"></video>
-      </div>
-
-      <div class="column is-two-thirds is-vcentered is-centered is-multiline is-flex">
-        <video class="video" id="exp_base_26"  max-width="100%"  loop playsinline autoPlay muted src="./src/ablation/shi-our3.mp4" onplay="resizeAndPlay(this)"></video>
-        <canvas  class="videoMerge" id="exp_base_26Merge"></canvas>
-      </div>
-
-    </div>
-  </div>
-</section>  -->
-
-
-    <!-- Concurrent Work.
-    <div class="columns is-centered">
-      <div class="column is-full-width">
-        <h2 class="title is-3">Related Links</h2>
-
-        <div class="content has-text-justified">
-          <p>
-            There's some work that was introduced around the same time as ours. Shi et al. Behind the scene
-          </p>
-          <p>
-            <a href="https://arxiv.org/abs/2104.09125">Progressive Encoding for Neural Optimization</a> introduces an idea similar to our windowed position encoding for coarse-to-fine optimization.
-          </p>
-          <p>
-            <a href="https://www.albertpumarola.com/research/D-NeRF/index.html">D-NeRF</a> and <a href="https://gvv.mpi-inf.mpg.de/projects/nonrigid_nerf/">NR-NeRF</a>
-            both use deformation fields to model non-rigid scenes.
-          </p>
-          <p>
-            Some works model videos with a NeRF by directly modulating the density, such as <a href="https://video-nerf.github.io/">Video-NeRF</a>, <a href="https://www.cs.cornell.edu/~zl548/NSFF/">NSFF</a>, and <a href="https://neural-3d-video.github.io/">DyNeRF</a>
-          </p>
-          <p>
-            There are probably many more by the time you are reading this. Check out <a href="https://dellaert.github.io/NeRF/">Frank Dellart's survey on recent NeRF papers</a>, and <a href="https://github.com/yenchenlin/awesome-NeRF">Yen-Chen Lin's curated list of NeRF papers</a>.
-          </p> -->
-        <!-- </div>
-      </div>
-    </div>
-    <!-/ Concurrent Work. -->
-
-  <!-- </div>
-</section> -->
 
 <section class="section">
   <!-- Paper Pipeline. -->
