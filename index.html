@@ -261,12 +261,12 @@
       <!-- <h2 class="title is-3">Abstract</h2> -->
       <div class="content has-text-justified">
         <div class="paragraph">
-        <p>
+        <!-- <p>
           Initially, we constructed a baseline using an explicit density field. 
           However, learning the geometry in this challenging task proved to be difficult. 
           We analyzed the unique obstacles that arose with this problem and devised two intuitive solutions: 
           non-sky opacity supervision and illumination injection. 
-        </p>
+        </p> -->
       </div>
         
       </div>  
@@ -289,7 +289,7 @@
 <section class="section">
   <div class="container is-max-desktop">
     <h3 class="title is-5">Non-Sky Opacity Loss</h3>
-    <div class="comparison">
+    <!-- <div class="comparison">
       <div class="paragraph">
         <p>
           The video on the left shows the predicted density, while the video on the right is the synthesized video based on a given trajectory. In both videos, the left-hand side displays the baseline result, while the right-hand side depicts the baseline result with Non-Sky Opacity Loss incorporated.
@@ -300,7 +300,7 @@
           When only Non-Sky Opacity supervision is added, the opacity of the air region is reduced to zero. However, the area between the air and the ground still appears unsatisfactory. Although this supervision does clear the sky region in the volume density, the inner region between the sky and the ground remains smoothed.
         </p>
       </div>
-    </div>
+    </div> -->
     <div class="columns is-centered is-multiline">
 
       <div class="column is-one-fourth is-vcentered is-centered is-multiline is-flex">
@@ -318,10 +318,10 @@
 <!-- <section class="section"> -->
   <div class="container is-max-desktop">
     <h3 class="title is-5">Illumination Injection </h3>
-    <p>
+    <!-- <p>
     Compared to the baseline, the addition of illumination injection can improve the appearance of the rendered depth, 
     but the density of trees appears indistinct, and the density of the sky region remains unclear.
-    </p>
+    </p> -->
     <div class="columns is-centered is-multiline">
       
 
@@ -342,7 +342,7 @@
 <!-- <section class="section"> -->
   <div class="container is-max-desktop">
     <h3 class="title is-5">Non-Sky Opacity Loss & Illumination Injection</h3>
-    <div class="comparison">
+    <!-- <div class="comparison">
       <div class="paragraph">
         <p>
           The simultaneous use of both strategies has resulted in a compelling 3D geometry representation that produces 
@@ -353,7 +353,7 @@
           The incorporation of both strategies has made geometry learning possible.
         </p>
       </div>
-    </div>
+    </div> -->
 
 
     <div class="columns is-centered is-multiline">
@@ -375,14 +375,14 @@
 <!-- <section class="section"> -->
   <div class="container is-max-desktop">
     <h3 class="title is-5">Cat Depth</h3>
-    <div class="comparison">
+    <!-- <div class="comparison">
       <div class="paragraph">
         <p>In each video, the left one is the baseline with Non-Sky Opacity Loss & Illumination Injection, the right one concatenate depth with the initial panora to send to the RenderNet(Sat2Density).</p>
         <p>    The depth information is concatenated with the initial panorama during the rendering process, 
           resulting in images that highlight regions with depth information and reduce the chances of generating objects in areas with an opacity of 0. 
           As a result, the synthesized ground view closely resembles the original satellite scene. </p>
       </div>
-    </div>
+    </div> -->
 
     
 
@@ -409,7 +409,7 @@
   <div class="columns is-centered has-text-centered">
     <h2 class="title is-3">Compare with Geometry Guided Street-View Synthesis<sup>[1]</sup></h2>
   </div>
-  <div class="comparison">
+  <!-- <div class="comparison">
     <div class="paragraph">
       <p>A previous excellent work Geometry Guided Street-View Panorama Synthesis<sup>[1]</sup> learned geometry through a height distribution map stored in a multi-plane image.</p>
       <p>For comparison, we expand their work by incorporating camera position changes during inference, enabling them to synthesize videos with moving cameras.</p>
@@ -420,7 +420,7 @@
     <div class="paragraph">
       <p>Please refer to our paper to more analysis.</p> 
     </div>
-  </div>
+  </div> -->
   <div class="container is-max-desktop">
     <div class="columns is-centered is-multiline">
       <div class="column is-one-third">
