@@ -213,20 +213,20 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <div class="paragraph">
-          <p>
-            This paper aims to develop an accurate 3D geometry representation of satellite images using satellite-ground image pairs.
-            Our focus is on the challenging problem of generating ground-view panoramas from satellite images. 
-          </p>
-          <p>
-            We draw inspiration from the density field representation used in volumetric neural rendering and propose a new approach, called Sat2Density. 
-            Our method utilizes the properties of ground-view panoramas for the sky and non-sky regions to learn faithful density fields of 3D scenes in a geometric perspective. 
-          </p>
-          <p>
-            Unlike other methods that require extra 3D information during training, our Sat2Density can automatically learn the accurate and faithful 3D geometry via density representation from 2D-only supervision.
-            This advancement significantly improves the ground-view panorama synthesis task.
-            Additionally, our study provides a new geometric perspective to understand the relationship between satellite and ground-view images in 3D space. 
-          </p>
-        </div>
+            <p>
+              This paper aims to develop an accurate 3D geometry representation of satellite images using satellite-ground image pairs.
+              Our focus is on the challenging problem of generating ground-view panoramas from satellite images. 
+            </p>
+            <p>
+              We draw inspiration from the density field representation used in volumetric neural rendering and propose a new approach, called Sat2Density. 
+              Our method utilizes the properties of ground-view panoramas for the sky and non-sky regions to learn faithful density fields of 3D scenes in a geometric perspective. 
+            </p>
+            <p>
+              Unlike other methods that require extra 3D information during training, our Sat2Density can automatically learn the accurate and faithful 3D geometry via density representation from 2D-only supervision.
+              This advancement significantly improves the ground-view panorama synthesis task.
+              Additionally, our study provides a new geometric perspective to understand the relationship between satellite and ground-view images in 3D space. 
+            </p>
+          </div>
           
         </div>
       </div>
@@ -347,9 +347,10 @@
 
 
 <div class="columns is-centered" style="margin-top: 25px">
-  <div class="column is-full-width">
-      <h2 class="title is-4">Effect of Components</h2>
-      <div class="content has-text-justified">
+  <div class="column is-full-width has-text-centered">
+      <h2 class="title is-3">Effect of Components</h2>
+      <!-- <h2 class="title is-4">Effect of Components</h2> -->
+      <div class="content has-text-justified paragraph">
           <p>
             Combining the two strategies we proposed, namely the non-sky opacity loss and illumination injection, 
             has eliminated the biggest obstacle to learning geometry from satellite-ground image pairs. 
@@ -452,7 +453,13 @@
 <section class="section pb-0">
   <div class="columns is-centered has-text-centered">
     <h2 class="title is-3">Compare with Geometry Guided Street-View Synthesis<sup>[1]</sup></h2>
+    
   </div>
+  <!-- <div class="paragraph">
+    <p>
+      Our 
+    </p>
+  </div> -->
   <!-- <div class="comparison">
     <div class="paragraph">
       <p>A previous excellent work Geometry Guided Street-View Panorama Synthesis<sup>[1]</sup> learned geometry through a height distribution map stored in a multi-plane image.</p>
@@ -469,21 +476,21 @@
     <div class="columns is-centered is-multiline">
       <div class="column is-one-third">
         <div class="columns is-mobile is-centered">
-          <div class="column is-half has-text-centered">
+          <div class="column  has-text-centered">
             <video src= "./src/ablation/sat1.mp4" autoplay loop muted playsinline  id="sat1"></video>
           </div>
         </div>
       </div>
       <div class="column is-one-third">
         <div class="columns is-mobile is-centered">
-          <div class="column is-half has-text-centered">
+          <div class="column  has-text-centered">
             <video src= "./src/ablation/sat2.mp4" autoplay loop muted playsinline  id="sat2"></video>
           </div>
         </div>
       </div>
       <div class="column is-one-third">
         <div class="columns is-mobile is-centered">
-          <div class="column is-half has-text-centered">
+          <div class="column has-text-centered">
             <video src= "./src/ablation/sat3.mp4" autoplay loop muted playsinline  id="sat3"></video>
           </div>
         </div>
