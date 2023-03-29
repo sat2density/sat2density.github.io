@@ -59,6 +59,9 @@
         align-items: center; 
         margin-top: 10px;
       }
+    .render_wrapper_small {
+    position: relative;
+        }
   </style>
 </head>
 <body>
@@ -248,10 +251,10 @@
 
 
 
-<div class="columns is-centered has-text-centered">
+<!-- <div class="columns is-centered has-text-centered">
   <h2 class="title is-3">Key Components Effect</h2>
   
-</div>
+</div> -->
 
 
 <div class="container is-max-desktop">
@@ -274,33 +277,11 @@
   </div>
 
 
+
+
 <!-- <section class="section">
   <div class="container is-max-desktop">
-    <h3 class="title is-3">Satellite </h3>
-    <div class="columns is-centered">
-
-      <div class="column is-vcentered is-centered" is-vcentered>
-          <video src= "./src/ablation/sat.mp4" autoplay preload loop muted playsinline></video>
-      </div>
-    </div>
-  </div>
-</section> -->
-
-<section class="section">
-  <div class="container is-max-desktop">
     <h3 class="title is-5">Non-Sky Opacity Loss</h3>
-    <!-- <div class="comparison">
-      <div class="paragraph">
-        <p>
-          The video on the left shows the predicted density, while the video on the right is the synthesized video based on a given trajectory. In both videos, the left-hand side displays the baseline result, while the right-hand side depicts the baseline result with Non-Sky Opacity Loss incorporated.
-        </p>
-      </div>
-      <div class="paragraph">
-        <p>
-          When only Non-Sky Opacity supervision is added, the opacity of the air region is reduced to zero. However, the area between the air and the ground still appears unsatisfactory. Although this supervision does clear the sky region in the volume density, the inner region between the sky and the ground remains smoothed.
-        </p>
-      </div>
-    </div> -->
     <div class="columns is-centered is-multiline">
 
       <div class="column is-one-fourth is-vcentered is-centered is-multiline is-flex">
@@ -313,15 +294,9 @@
       </div>
     </div>
   </div>
-<!-- </section> -->
-
-<!-- <section class="section"> -->
   <div class="container is-max-desktop">
     <h3 class="title is-5">Illumination Injection </h3>
-    <!-- <p>
-    Compared to the baseline, the addition of illumination injection can improve the appearance of the rendered depth, 
-    but the density of trees appears indistinct, and the density of the sky region remains unclear.
-    </p> -->
+
     <div class="columns is-centered is-multiline">
       
 
@@ -336,26 +311,8 @@
       </div>
     </div>
   </div>
-<!-- </section> -->
-
-
-<!-- <section class="section"> -->
   <div class="container is-max-desktop">
     <h3 class="title is-5">Non-Sky Opacity Loss & Illumination Injection</h3>
-    <!-- <div class="comparison">
-      <div class="paragraph">
-        <p>
-          The simultaneous use of both strategies has resulted in a compelling 3D geometry representation that produces 
-          a depth map that accurately reflects the satellite scene. The volume density is noticeably clearer than the baselines, 
-          and the inner regions can be easily distinguished, indicating the success of the combined approach.
-        </p> 
-        <p>  
-          The incorporation of both strategies has made geometry learning possible.
-        </p>
-      </div>
-    </div> -->
-
-
     <div class="columns is-centered is-multiline">
       
 
@@ -370,23 +327,8 @@
       </div>
     </div>
   </div>
-<!-- </section> -->
-
-<!-- <section class="section"> -->
   <div class="container is-max-desktop">
     <h3 class="title is-5">Cat Depth</h3>
-    <!-- <div class="comparison">
-      <div class="paragraph">
-        <p>In each video, the left one is the baseline with Non-Sky Opacity Loss & Illumination Injection, the right one concatenate depth with the initial panora to send to the RenderNet(Sat2Density).</p>
-        <p>    The depth information is concatenated with the initial panorama during the rendering process, 
-          resulting in images that highlight regions with depth information and reduce the chances of generating objects in areas with an opacity of 0. 
-          As a result, the synthesized ground view closely resembles the original satellite scene. </p>
-      </div>
-    </div> -->
-
-    
-
-
     <div class="columns is-centered is-multiline">
       
 
@@ -401,8 +343,110 @@
       </div>
     </div>
   </div>
-</section>
+</section> -->
 
+
+<div class="columns is-centered" style="margin-top: 25px">
+  <div class="column is-full-width">
+      <h2 class="title is-4">Effect of Components</h2>
+      <div class="content has-text-justified">
+          <p>
+            Combining the two strategies we proposed, namely the non-sky opacity loss and illumination injection, 
+            has eliminated the biggest obstacle to learning geometry from satellite-ground image pairs. 
+            Besides, cat depth with the initial panorama to sent to RenderNet helps the rendered image more faithful to the geometry.
+          </p>
+      </div>
+      <div class="columns is-centered">
+          <div class="column is-4">
+              <div class="buttons is-centered" style="height: 100%">
+                <button class="button glowing-border" id="button_0" style="background-color: #a0a0b5; color: #ffffff; width: 100%">Ours</button>
+                <button class="button glowing-border" id="button_1" style="background-color: #a0a0b5; color: #ffffff; width: 100%">Ours w/o cat depth (Ours-nd)</button>
+                <button class="button glowing-border" id="button_2" style="background-color: #a0a0b5; color: #ffffff; width: 100%">Ours-nd w/ illumination injection</button>
+                <button class="button glowing-border" id="button_3" style="background-color: #a0a0b5; color: #ffffff; width: 100%">Ours-nd w/o non-sky opacity loss</button>
+                <button class="button glowing-border" id="button_4" style="background-color: #a0a0b5; color: #ffffff; width: 100%">Ours-nd w/o illumination & opacity</button>
+              </div>
+          </div>
+
+          <div class="column" style="background-color: #f5f5f5; margin-left: -5px;  ">
+            <div class="item item-steve render_wrapper_small full">
+                <video poster="" autoplay="" controls="" muted="" loop="">
+                    <source src="./src/ablation/full/rgb.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div class="item item-steve render_wrapper_small illu-opa">
+                <video poster="" autoplay="" controls="" muted="" loop="">
+                    <source src="./src/ablation/illu-opa/rgb.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div class="item item-steve render_wrapper_small opa">
+                <video poster="" autoplay="" controls="" muted="" loop="">
+                    <source src="./src/ablation/opa/rgb.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div class="item item-steve render_wrapper_small illu">
+                <video poster="" autoplay="" controls="" muted="" loop="">
+                    <source src="./src/ablation/illu/rgb.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div class="item item-steve render_wrapper_small base">
+              <video poster="" autoplay="" controls="" muted="" loop="">
+                  <source src="./src/ablation/base/rgb.mp4" type="video/mp4">
+              </video>
+            </div>
+          </div>
+          <div class="column" style="background-color: #f5f5f5; margin-left: 5px;">
+              <div class="item item-steve render_wrapper_small full">
+                  <video poster="" autoplay="" controls="" muted="" loop="">
+                      <source src="./src/ablation/full/density.mp4" type="video/mp4">
+                  </video>
+              </div>
+              <div class="item item-steve render_wrapper_small illu-opa">
+                  <video poster="" autoplay="" controls="" muted="" loop="">
+                      <source src="./src/ablation/illu-opa/density.mp4" type="video/mp4">
+                  </video>
+              </div>
+              <div class="item item-steve render_wrapper_small opa">
+                  <video poster="" autoplay="" controls="" muted="" loop="">
+                      <source src="./src/ablation/opa/density.mp4" type="video/mp4">
+                  </video>
+              </div>
+              <div class="item item-steve render_wrapper_small illu">
+                  <video poster="" autoplay="" controls="" muted="" loop="">
+                      <source src="./src/ablation/illu/density.mp4" type="video/mp4">
+                  </video>
+              </div>
+              <div class="item item-steve render_wrapper_small base">
+                <video poster="" autoplay="" controls="" muted="" loop="">
+                    <source src="./src/ablation/base/density.mp4" type="video/mp4">
+                </video>
+            </div>
+          </div>
+          <!-- <div class="column" style="background-color: #f5f5f5; margin-left: 5px;">
+              <div class="full item item-steve render_wrapper_small">
+                  <video poster="" autoplay="" controls="" muted="" loop="">
+                      <source src="./static/ablation/ours/semantics.mp4" type="video/mp4">
+                  </video>
+              </div>
+              <div class="item item-steve render_wrapper_small noseg">
+                  <video poster="" autoplay="" controls="" muted="" loop="">
+                      <source src="./static/ablation/noseg/semantics.mp4" type="video/mp4">
+                  </video>
+              </div>
+              <div class="item item-steve render_wrapper_small noprob">
+                  <video poster="" autoplay="" controls="" muted="" loop="">
+                      <source src="./static/ablation/noprob/semantics.mp4" type="video/mp4">
+                  </video>
+              </div>
+              <div class="item item-steve render_wrapper_small noblock">
+                  <video poster="" autoplay="" controls="" muted="" loop="">
+                      <source src="./static/ablation/noblock/semantics.mp4" type="video/mp4">
+                  </video>
+              </div>
+          </div> -->
+      </div>
+
+  </div>
+</div>
 
 
 <section class="section pb-0">
@@ -532,9 +576,9 @@
 </section>
 
 
-<footer class="footer">
+<!-- <footer class="footer"> -->
   <div class="container">
-    <div class="content has-text-centered">
+    <!-- <div class="content has-text-centered"> -->
       <!-- <a class="icon-link"
          href="./static/videos/nerfies_paper.pdf">
         <i class="fas fa-file-pdf"></i>
@@ -542,19 +586,66 @@
       <a class="icon-link" href="https://github.com/keunhong" class="external-link" disabled>
         <i class="fab fa-github"></i>
       </a> -->
-    </div>
+    <!-- </div> -->
     <div class="columns is-centered">
       <div class="column is-8">
         <div class="content">
-          <p>
+          <!-- <p> -->
             This website was modified from the <a
             href="https://github.com/nerfies/nerfies.github.io">nerfies</a>. Appreaciate for the template!
-          </p>
+          <!-- </p> -->
         </div>
       </div>
     </div>
   </div>
-</footer>
+<!-- </footer> -->
+
+<script type="module">
+  window.onload = function() {
+      function set_ablation_state(state) {
+          let states = ["full", "illu-opa", "opa", "illu","base"];
+          for (let i = 0; i < states.length; i++){
+              let all_items = document.getElementsByClassName(states[i])
+              if (i == state){
+                  [].forEach.call(all_items, item => {
+                      // item.style.display = 'box'
+                      item.style.visibility = 'visible'
+                      item.style.maxHeight = '100%'
+                  })
+              }
+              else {
+                  [].forEach.call(all_items, item => {
+                      // item.style.display = 'none'
+                      item.style.visibility = 'hidden'
+                      item.style.maxHeight = 0
+                  })
+              }
+          }
+      }
+
+      set_ablation_state(0)
+      // document.getElementById("button_0").focus();
+      document.getElementById('button_0').addEventListener('click', function(event){
+          set_ablation_state(0)
+      })
+      document.getElementById('button_1').addEventListener('click', function(event){
+          set_ablation_state(1)
+      })
+      document.getElementById('button_2').addEventListener('click', function(event){
+          set_ablation_state(2)
+      })
+      document.getElementById('button_3').addEventListener('click', function(event){
+          set_ablation_state(3)
+      })  
+      document.getElementById('button_4').addEventListener('click', function(event){
+          set_ablation_state(4)
+      })
+
+
+
+  };
+
+</script>
 
 </body>
 </html>
