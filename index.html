@@ -10,6 +10,7 @@
 
     gtag('config', 'G-DDB01NJY3Z');
   </script>
+  <link rel="stylesheet" type="text/css" href="slick.css">
   <meta charset="utf-8">
   <meta name="description"
         content="Sat2Density">
@@ -30,7 +31,21 @@
 
     gtag('config', 'G-PYVRSFMDRL');
   </script>
-
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script type="text/javascript" src="slick.min.js"></script>
+  
+  <script>
+    $(document).ready(function(){
+      $('.video-slider').slick({
+        // arrows: false, // 不显示箭头
+        infinite: true, // 无限循环
+        slidesToShow: 1, // 一次显示一个视频
+        slidesToScroll: 1, // 一次滚动一个视频
+        autoplay: true, // 自动播放
+        autoplaySpeed: 5000 // 5秒切换一个视频
+      });
+    });
+  </script>
   <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
         rel="stylesheet">
 
@@ -127,7 +142,11 @@
           </div>
 
           <div class="is-size-5 publication-authors">
-            <span class="author-block">Wuhan University</span>
+            <span class="author-block">Wuhan University &nbsp Ant Group</span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">ICCV 2023</span>
           </div>
 
           <div class="column has-text-centered">
@@ -164,12 +183,12 @@
               </span> -->
               <!-- Code Link. -->
               <span class="link-block">
-                <a href=''
+                <a href='https://github.com/qianmingduowan/Sat2Density'
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="fab fa-github"></i>
                   </span>
-                  <span>Code_TDB</span>
+                  <span>Code</span>
                   </a>
               </span>
               <!-- Dataset Link. -->
@@ -539,6 +558,53 @@
 
   setInterval(synchronized, 100);
 </script>
+
+<section class="section">
+  <!-- Paper Pipeline. -->
+  <div class="container is-max-desktop">
+  <div class="columns is-centered has-text-centered">
+     <div class="columns is-centered">
+        <div class="column is-full-width">
+          <h2 class="title is-3">Illumination interpolation</h2>
+
+          <div class="content has-text-justified">
+            <div class="video-slider">
+              <div class="video">
+                <video muted autoplay loop>
+                  <source src="src/interpolation/interpolation0.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="video">
+                <video muted autoplay loop>
+                  <source src="src/interpolation/interpolation1.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="video">
+                <video muted autoplay loop>
+                  <source src="src/interpolation/interpolation2.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="video">
+                <video muted autoplay loop>
+                  <source src="src/interpolation/interpolation3.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="video">
+                <video muted autoplay loop>
+                  <source src="src/interpolation/interpolation4.mp4" type="video/mp4">
+                </video>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</section>  
+
+
 
 <section class="section">
   <!-- Paper Pipeline. -->
